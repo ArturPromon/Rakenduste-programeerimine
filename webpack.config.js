@@ -14,5 +14,10 @@ module.exports = {
         from: "public"
       }
     ])
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  }
 };
