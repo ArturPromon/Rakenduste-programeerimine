@@ -3,7 +3,7 @@ import {Link } from "react-router-dom";
 
 const ItemList = (props) => {
     return (
-        <div className={"content"}>
+        <div>
             {
                 props.items.map( item => {
                     return <Item 
