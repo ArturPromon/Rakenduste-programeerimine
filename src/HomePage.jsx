@@ -3,7 +3,11 @@ import {phones, laptops} from "./mydatabase.js";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 
-class HomePage extends React.PureComponent{
+const PHONES = "phones";
+const LAPTOPS = "laptops";
+
+
+class HomePage extends React.Component{
 
 constructor(props){
     super(props);
@@ -14,30 +18,33 @@ constructor(props){
 
    handleChange(event) {
     console.log(event.target.value);
+    console.log(this.state);
     switch(event.target.value) {
-      case "phones":{
+      case PHONES:{
+        console.log("phones");
         this.setState=({
           items: phones,
         });
         break;
       }
-      case "laptops":{
+      case LAPTOPS:{
+        console.log("laptops");
         this.setState=({
           items: laptops,
         });
         break;
       }
     }
-    console.log("App state", this.state);
   };
 
   render(){
+    console.log("App state", this.state);
     return(
       <>
         <Header />
         <select onChange ={this.handleChange.bind(this)}>
-          <option value="phones">Phones</option>
-          <option value="laptops">Laptops</option>
+          <option value={PHONES}>Phones</option>
+          <option value={LAPTOPS}>Laptops</option>
         </select> 
         <ItemList  items ={this.state.items}/>
       </>
