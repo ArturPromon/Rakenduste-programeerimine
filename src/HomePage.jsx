@@ -21,15 +21,15 @@ constructor(props){
     console.log(this.state);
     switch(event.target.value) {
       case PHONES:{
-        console.log("phones");
-        this.setState=({
+        console.log("phones", this);
+        this.setState({
           items: phones,
         });
         break;
       }
       case LAPTOPS:{
         console.log("laptops");
-        this.setState=({
+        this.setState({
           items: laptops,
         });
         break;
