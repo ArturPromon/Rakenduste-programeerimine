@@ -1,52 +1,59 @@
 import React from "react";
-import {phones, laptops} from "./mydatabase.js";
 import Header from "./Header.jsx";
 import ItemList from "./ItemList.jsx";
 
-const PHONES = "phones";
-const LAPTOPS = "laptops";
-
-
-class HomePage extends React.Component{
+class HomePage extends React.PureComponent{
 
 constructor(props){
     super(props);
     this.state={
-      items: phones,
+      items: [],
+      sellectedCategory: "phones",
     };
   }
 
-   handleChange(event) {
-    console.log(event.target.value);
-    console.log(this.state);
-    switch(event.target.value) {
-      case PHONES:{
-        console.log("phones", this);
-        this.setState({
-          items: phones,
-        });
-        break;
-      }
-      case LAPTOPS:{
-        console.log("laptops");
-        this.setState({
-          items: laptops,
-        });
-        break;
-      }
-    }
-  }
+componentDidMount(){
+  this.fetchItems();
+}
+
+fetchItems = () => {
+  fetch("/api/items")
+  .then(res =>{
+    console.log("res", res);
+    return res.json();
+  })
+  .then(items => {
+    console.log("items", items);
+    this.setState({
+      items
+    });
+  }) 
+  .catch(err =>{
+    console.log("err", err);
+  });
+};
+
+handleDropDown(event) {
+  console.log(event.target.value);
+  this.setState({
+    sellectedCategory: event.target.value
+  });
+}
+
+getVisibleItems = ()=> {
+  return this.state.items.filter(item=> item.category ===this.state.sellectedCategory);
+};
 
   render(){
     console.log("App state", this.state);
     return(
       <>
         <Header />
-        <select onChange ={this.handleChange.bind(this)}>
-          <option value={PHONES}>Phones</option>
-          <option value={LAPTOPS}>Laptops</option>
+        <select onChange ={this.handleDropDown.bind(this)}>
+          <option value="phones">Phones</option>
+          <option value="laptops">Laptops</option>
         </select> 
-        <ItemList  items ={this.state.items}/>
+        <ItemList  items ={this.getVisibleItems()}/>
       </>
     );
   }
