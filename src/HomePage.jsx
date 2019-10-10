@@ -13,7 +13,7 @@ constructor(props){
     super(props);
     this.state={
       items: phones,
-    }
+    };
   }
 
    handleChange(event) {
@@ -35,7 +35,7 @@ constructor(props){
         break;
       }
     }
-  };
+  }
 
   render(){
     console.log("App state", this.state);
@@ -48,8 +48,8 @@ constructor(props){
         </select> 
         <ItemList  items ={this.state.items}/>
       </>
-    )
-  };
+    );
+  }
 }
 
 export default HomePage;

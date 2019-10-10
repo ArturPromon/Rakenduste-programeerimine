@@ -16,8 +16,8 @@ class ItemPage extends React.PureComponent{
             {item.title}
         </div>
       </>
-    )
-  };
+    );
+  }
 }
 
 export default ItemPage;

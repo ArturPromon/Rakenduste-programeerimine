@@ -10,11 +10,11 @@ const ItemList = (props) => {
                         imgSrc={item.imgSrc}
                         price={item.price}
                         title={item.title}
-                    />
+                    />;
                 })
             }
         </div>
-    )
+    );
 };
 
 const Item = (props) => {
@@ -27,7 +27,7 @@ const Item = (props) => {
             </div>
         </Link>
         
-    )
+    );
 };
 
 export default ItemList;
