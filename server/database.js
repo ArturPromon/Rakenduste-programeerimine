@@ -11,14 +11,14 @@ const getItems = () => {
             ...phone,
             id: "phones-" +index,
             category: "phones"
-        })
+        });
     });
     laptops.forEach( (laptop, index)=>{
         items.push({
             ...laptop,
             id: "laptops-" +index,
             category: "laptops"
-        })
+        });
     });
     return items;
 };
