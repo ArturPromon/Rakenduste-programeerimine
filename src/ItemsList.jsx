@@ -1,10 +1,11 @@
 import React from "react";
 import {Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import "./itemslist.css";
 
-const ItemList = (props) => {
+const ItemsList = (props) => {
     return (
-        <div className={"content"}>
+        <div className={"items-layout"}>
             {
                 props.items.map( item => {
                     return <Item 
@@ -21,17 +22,22 @@ const ItemList = (props) => {
 };
 
 
-ItemList.propTypes = {
+ItemsList.propTypes = {
     items: PropTypes.array.isRequired
 };
 
 const Item = (props) => {
     return (
-        <Link to ={`/items/${props.id}`}>
-            <div className={"item"}>
+        <Link to ={`/items/${props.id}`} className={"item"}>
+            <div className={"item__img-wraper"}>
                 <img src={props.imgSrc}/>
+            </div>
+            <div className={"item__description"}>
                 <div className="item__title">{props.title}</div>
-                <div className="item__price">{props.price}</div>
+                <div className={"item-footer"}>
+                    <div className="item__price">{props.price}</div>
+                    <div className="item__reviews">{`(${getRandomIntInclusive(0,100)} reviews)`}</div>
+                </div>
             </div>
         </Link>
         
@@ -46,4 +52,10 @@ Item.propTypes = {
 
 };
 
-export default ItemList;
+export default ItemsList;
+
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}

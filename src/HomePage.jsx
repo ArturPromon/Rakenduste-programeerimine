@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header.jsx";
-import ItemList from "./ItemList.jsx";
+import ItemsList from "./ItemsList.jsx";
 import Checkbox from "./Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./homepage.css";
@@ -67,29 +67,37 @@ getVisibleItems = ()=> {
 
 isSelected = (name) => this.state.selectedCategories.indexOf(name) >= 0;
 
-handleSortDropdown= (event) => {
+handleSortDropdown= (sortDirection) => {
   this.setState({
-    sortDirection: parseInt(event.target.value),
+    sortDirection: sortDirection,
   });
 };
 
   render(){
-    console.log("App state", this.state);
+    const items = this.getVisibleItems();
     return(
       <>
         <Header />
+        <div className={"body-wrapper"}>
+        <div className={"filters-wrapper"}>
         <ItemFilters
-        allCategories={this.state.allCategories}
-        handleDropDown={this.handleDropDown}
-        isSelected={this.isSelected}
+          allCategories={this.state.allCategories}
+          handleDropDown={this.handleDropDown}
+          isSelected={this.isSelected}
         />
-        <div className = {"items-settings"}>
+        </div>
+        <div className = {"items-header-wrapper"}>
+          <div>
+            Items found {items.length} {this.state.selectedCategories.join(", ")}
+          </div>
           <SortDropdown
             direction={this.state.sortDirection}
             onChange={this.handleSortDropdown}
           />
         </div>
-        <ItemList  items ={this.getVisibleItems()}/>
+        <ItemsList  items ={items}/>
+        </div>
+
       </>
     );
   }
@@ -97,7 +105,7 @@ handleSortDropdown= (event) => {
 
 const ItemFilters = ({allCategories, handleDropDown, isSelected}) => {
   return(
-    <div className = {"itemFilters-wrapper"}>
+    <>
       {
         allCategories.map(categoryName => {
           return(
@@ -110,7 +118,7 @@ const ItemFilters = ({allCategories, handleDropDown, isSelected}) => {
           );
         })
       }
-    </div>
+    </>
   );
 };
 
