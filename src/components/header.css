@@ -19,7 +19,7 @@
   align-items: center;
 }
 .header__buttons img{
-  height:25px
+height:55px
 }
 .header__button{
   display: flex;
