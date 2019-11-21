@@ -38,20 +38,25 @@ fetchItems = () => {
   });
 };
 
-handleDropDown = (event) => {
-  if(this.isSelected(event.target.name)){
-    const clone = this.state.selectedCategories.slice();
-    const index = this.state.selectedCategories.indexOf(event.target.name);
-    clone.splice(index, 1);
-    this.setState({
-      selectedCategories: clone
-    });
+handleFilterSelect = (event) => {
+  const categoryName = event.target.name;
+  if(this.isSelected(categoryName)){
+      return this.unselectCategory(categoryName);
   }
-  else{
-    this.setState({
-      selectedCategories: this.state.selectedCategories.concat([event.target.name])
-    })
-  }
+  this.selectCategory(categoryName);
+    };
+
+    selectCategory = (categoryName) => {
+        this.setState({
+            selectedCategories: this.state.selectedCategories.concat([categoryName])
+        });
+    };
+
+    unselectCategory = (categoryName) => {
+        const newArr = this.state.selectedCategories.filter(cn => cn !== categoryName);
+        this.setState({
+            selectedCategories: newArr
+        });
 };
 getVisibleItems = ()=> {
   return this.state.items
@@ -80,7 +85,7 @@ handleSortDropdown= (sortDirection) => {
         <div className={"filters-wrapper"}>
         <ItemFilters
           allCategories={this.state.allCategories}
-          handleDropDown={this.handleDropDown}
+          handleDropDown={this.handleFilterSelect}
           isSelected={this.isSelected}
         />
         </div>
@@ -100,7 +105,6 @@ handleSortDropdown= (sortDirection) => {
     );
   }
 }
-
 const ItemFilters = ({allCategories, handleDropDown, isSelected}) => {
   return(
     <>
@@ -119,11 +123,9 @@ const ItemFilters = ({allCategories, handleDropDown, isSelected}) => {
     </>
   );
 };
-
 ItemFilters.propTypes = {
   allCategories: PropTypes.array.isReqired,
   handleDropDown: PropTypes.func.isReqired,
   isSelected: PropTypes.func.isReqired,
 }
-
 export default HomePage;
