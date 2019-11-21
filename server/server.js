@@ -8,6 +8,7 @@ const userRouter = require("./user.router.js");
 const DB = require("./database.js");
 const Item = require("./item.model.js");
 const bodyParser = require("body-parser");
+const authRouter = require("./auth.router");
 
 /** Development environment. In Heroku we don't use .env file */
 if(process.env.NODE_ENV !== "production"){
@@ -18,8 +19,9 @@ const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@
 
 app.use(bodyParser.json());
 
-app.use(ItemRouter);
-app.use(userRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/",ItemRouter);
+app.use("/api/v1/",userRouter);
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
