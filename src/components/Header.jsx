@@ -4,36 +4,30 @@ import {profileIcon} from "../icons";
 import {cartIcon} from "../icons";
 import "./header.css";
 import PropTypes from "prop-types";
-import {AuthContext} from "../index.jsx";
+import authConsumer from "./authConsumer.jsx";
 
-const Header = () => {
+const Header = ({user}) => {
   return(
-    <AuthContext.Consumer>
-			{
-				(contextValue) => (
-					<div className='header'>
-						<Link to={"/"}>
-							<img className="header__logo" src="/images/tlu_logo.png"/>
-						</Link>
-						<div className="header__buttons">
-							{contextValue.user.email && <WelcomeIcon user={contextValue.user}/>}
-							{!contextValue.user.email && <LoginRegisterIcon/>}
-							<div className={"header__button"}>
-								<img src={cartIcon} style={{width: 30}}/>
-								<div className={"header__button-text"}>cartIcon</div>
-							</div>
-						</div>
-					</div>
-				)
-			}
-		</AuthContext.Consumer>
+<div className='header'>
+			<Link to={"/"}>
+				<img className="header__logo" src="/images/tlu_logo.png"/>
+			</Link>
+			<div className="header__buttons">
+				{user.email && <WelcomeIcon user={user}/>}
+				{!user.email && <LoginRegisterIcon/>}
+				<div className={"header__button"}>
+					<img src={cartIcon} style={{width: 30}}/>
+					<div className={"header__button-text"}>Shopcart</div>
+				</div>
+			</div>
+		</div>
   );
 };
 
-// Header.propTypes = {
-// 	token: PropTypes.string,
-// 	user: PropTypes.object,
-// };
+Header.propTypes = {
+	token: PropTypes.string,
+	user: PropTypes.object,
+};
 
 
 const LoginRegisterIcon = () => {
@@ -58,5 +52,5 @@ WelcomeIcon.propTypes = {
 	user: PropTypes.object.isRequired,
 };
 
-export default Header;
+export default authConsumer(Header); 
   
