@@ -12,12 +12,16 @@ const userSchema = new mongoose.Schema({
  */
 userSchema.statics.login = function({email, password}){
     return new Promise((resolve, reject) => {
-        this.findOne({email}, (err, doc) => {
+        this.findOne({email}, (err, userdoc) => {
             if(err) return reject(err);
-            if(doc === null) return reject("user not found");
-            bcryptjs.compare(password, doc.hash, function(err, result) {
+            if(userdoc === null) return reject("user not found");
+            bcryptjs.compare(password, userdoc.hash, function(err, result) {
                 if(err) return reject(err);
-                resolve(result);
+                resolve({
+                    email: userDoc.email,
+                    created_At: userDoc.createdAt,
+                    _id: userDoc._id,
+                });
             });
         })
     });
