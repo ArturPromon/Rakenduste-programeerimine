@@ -1,6 +1,6 @@
 const User = require("./user.model.js");
 const jwt = require("jsonwebtoken");
-
+// const PRIVATE_KEY = "test_password";
 
 exports.login = (req, res) => {
     User.login(req.body)
@@ -15,6 +15,7 @@ exports.login = (req, res) => {
                     token,
                 });
             });
+
         })
         .catch(err => {
             res.send(401);
@@ -27,6 +28,7 @@ exports.signup = (req, res) => {
             res.status(200).json(user);
         })
         .catch(err => {
+            console.log("err", err);
             res.send(500);
         });
-} 
+};

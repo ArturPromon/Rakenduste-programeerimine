@@ -26,7 +26,6 @@ router.post("/verify", (req,res) => {
     });
 });
 
-
 /** Login */
 router.post("/login", userController.login);
 
@@ -36,7 +35,7 @@ router.post("/signup", [
         check('email').isEmail().normalizeEmail(),
         // password must be at least 5 chars long
         check('password')
-            .isLength({ min: 5 }).withMessage("must be at least 5 char long")
+            .isLength({ min: 5 }).withMessage("must at least 5 char long")
             .matches(/\d/).withMessage("must contain a number")
             .not().isIn(["12345", "password", "parool"]).withMessage("Do not use common password!")
     ],
