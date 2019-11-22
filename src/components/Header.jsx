@@ -15,10 +15,10 @@ const Header = ({user}) => {
 			<div className="header__buttons">
 				{user.email && <WelcomeIcon user={user}/>}
 				{!user.email && <LoginRegisterIcon/>}
-				<div className={"header__button"}>
+				<Link to ={"/checkout/cart"} className={"header__button"}>
 					<img src={cartIcon} style={{width: 30}}/>
 					<div className={"header__button-text"}>Shopcart</div>
-				</div>
+				</Link>
 			</div>
 		</div>
   );
