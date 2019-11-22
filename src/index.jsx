@@ -7,7 +7,7 @@ import Header from "./components/Header.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
-import NotFound from "./pages/NotFound.jsx";
+import NotFound from "./pages/notFound.jsx";
 import store from "./store.js";
 import CartPage from "./pages/CartPage.jsx";
 import "../public/main.css";
