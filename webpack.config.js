@@ -6,12 +6,23 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'static/bundle.js'
   },
   plugins: [
     new CopyPlugin([
       {
-        from: "public"
+        from: "public/index.html"
+      }
+    ]),
+    new CopyPlugin([
+      {
+        from: "public/main.css"
+      }
+    ]),
+    new CopyPlugin([
+      {
+        from: "public/images",
+        to: "static/images"
       }
     ])
   ],
@@ -41,7 +52,7 @@ module.exports = {
 
   devServer: {
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'dist/static'),
     compress: true,
     port: 9000,
     proxy: {
