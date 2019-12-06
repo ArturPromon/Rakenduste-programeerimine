@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {getItems} from "../actions/itemsActions";
 import {IoMdTrash} from "react-icons/io";
 import "../components/cart.css";
+import FancyButton from "../components/FancyButton.jsx";
 
 class CartPage extends React.PureComponent{
     state = {
@@ -25,9 +26,25 @@ class CartPage extends React.PureComponent{
 
     render() {
         return(
-            <Table
-                rows={this.state.rows}
-            />
+            <div className={"cart_items"}>
+                <Table
+                    rows={this.state.rows}
+                />
+                <div className={"cart_summary"}>
+                    <table>
+                        <tbody>
+                        <tr><td>Vahesumma:</td><td>200 €</td></tr>
+                        <tr><td>Maksud:</td><td>20 €</td></tr>
+                        <tr><td>Kokku:</td><td>180 €</td></tr>
+                        <tr>
+                                <div className={"submit"}>
+                                    <FancyButton>VORMISTA OST</FancyButton>
+                                </div>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         );
     }
 }

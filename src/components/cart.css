@@ -1,0 +1,39 @@
+.row{
+    display: flex;
+    position: relative;
+    padding: 50px 0 50px 0;
+    border-color: #1a1a1a;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-style: solid;
+}
+.cell{
+    margin: 10px 10px 10px 10px;
+}
+.title{
+    margin: 20px 10px 20px 10px;
+    left: 30%;
+    position: relative;
+}
+.price{
+    margin: 20px 10px 20px 10px;
+    position: absolute;
+    right: 10%;
+    width: 10%;
+}
+.category{
+    margin: 20px 10px 20px 10px;
+    left: 30%;
+    position: absolute;
+}
+.close-icon{
+    margin: 10px 10px 10px 10px;
+    right: 2px;
+    position: absolute;
+    top: 50px;
+}
+table{
+    display: flex;
+    margin: 30px;
+    justify-content: center;
+}

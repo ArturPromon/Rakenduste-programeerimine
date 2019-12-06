@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./itempage.css";
+import FancyButton from "../components/FancyButton.jsx";
 
 class ItemPage extends React.PureComponent{
 
@@ -37,7 +38,8 @@ class ItemPage extends React.PureComponent{
         <div className = {"itemContainer"}>
             <img src = {this.state.imgSrc}/>
             <div className ={"item__title"}>{this.state.title}</div>
-            <div className ={"item__price"}>{this.state.price}</div>
+            <div className ={"item__price"}>{this.state.price}€</div>
+            <FancyButton>OSTA</FancyButton>
         </div>
       </>
     );

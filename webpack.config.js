@@ -16,11 +16,6 @@ module.exports = {
     ]),
     new CopyPlugin([
       {
-        from: "public/main.css"
-      }
-    ]),
-    new CopyPlugin([
-      {
         from: "public/images",
         to: "static/images"
       }
@@ -45,14 +40,23 @@ module.exports = {
         test: /\.(js|jsx)$/, 
         exclude: /node_modules/,
         use: 'babel-loader', 
-      }
+      },
+      {
+        test: /\.(woff|woff2)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options:{
+              outputPath: "static/fonts"
+            }
+          },
+        ],
+      },
     ]
   },
-
-
   devServer: {
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'dist/static'),
+    contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000,
     proxy: {
