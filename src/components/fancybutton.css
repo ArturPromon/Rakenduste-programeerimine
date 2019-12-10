@@ -7,6 +7,11 @@
     padding: 5px;
     font-size: large;
 }
+.submit-button:hover{
+    cursor: pointer;
+    background: #4F4E4E;
+    transition: all .2s ease-in-out;
+}
 table {
     display: block;
     margin: 10px;

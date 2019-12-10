@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import {IoMdArrowDropright} from "react-icons/io";
 import "./fancybutton.css";
 
-const FancyButton = ({children}) => {
+const FancyButton = ({children, onClick}) => {
     return (
-        <div className={"submit-button"}>
+        <div className={"submit-button"} onClick={onClick}>
             <div>
                 {children}
             </div>
@@ -15,7 +15,8 @@ const FancyButton = ({children}) => {
 };
 
 FancyButton.propTypes = {
-    children: PropTypes.string.isRequired
+    children: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default FancyButton; 

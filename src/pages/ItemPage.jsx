@@ -2,8 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./itempage.css";
 import FancyButton from "../components/FancyButton.jsx";
+import {connect} from "react-redux";
+import {addItem} from "../store/store.js";
 
 class ItemPage extends React.PureComponent{
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+};
 
   constructor(props){
     super(props);
@@ -28,18 +33,22 @@ class ItemPage extends React.PureComponent{
       console.log("item page", err);
     });
   };
+  handleBuy = () => {
+    console.log("handlebuy");
+    this.props.dispatch(addItem(this.state._id));
+  };
 
   render(){
     console.log("this props", this.props);
-    console.log("itemID", this.props.match.params.itemId);
-    console.log("this.state", this.state);
+
     return(
       <>
         <div className = {"itemContainer"}>
             <img src = {this.state.imgSrc}/>
             <div className ={"item__title"}>{this.state.title}</div>
             <div className ={"item__price"}>{this.state.price}€</div>
-            <FancyButton>OSTA</FancyButton>
+            <div>{loremIpsum}</div>
+            <FancyButton onClick={this.handleBuy}>OSTA</FancyButton>
         </div>
       </>
     );
@@ -50,4 +59,6 @@ ItemPage.propTypes = {
   match: PropTypes.object.isRequired,
 };
 
-export default ItemPage;
+export default connect()(ItemPage);
+
+const loremIpsum = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."; 
