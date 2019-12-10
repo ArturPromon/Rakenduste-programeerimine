@@ -81,7 +81,7 @@ const Row = ({title, imgSrc, category, price}) => {
         </div>
     );
 };
-Row.propTypes = {
+export const ItemProps = {
     _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     imgSrc: PropTypes.string.isRequired,
@@ -89,3 +89,4 @@ Row.propTypes = {
     price: PropTypes.number.isRequired
 };
 export default CartPage; 
+Row.propTypes = ItemProps;
