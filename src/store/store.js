@@ -1,8 +1,45 @@
-import {createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
 
 // const USER_SUCCESS = "USER_LOADED";
 // const USER_REQUEST = "USER_REQUEST";
 // const USER_FAILURE = "USER_FAILURE";
+
+const ITEMS_SUCCESS = "ITEMS_SUCCESS";
+const ITEMS_REQUEST = "ITEMS_REQUEST";
+const ITEMS_FAILURE = "ITEMS_FAILURE";
+
+export const getItems = () => (dispatch, getState) => {
+    if(getState().items.length > 0) return null;
+    dispatch(itemsRequest());
+    return fetch("/api/v1/items")
+        .then(res => {
+            return res.json();
+        })
+        .then(items => {
+            dispatch(itemsSuccess(items));
+        })
+        .catch(err => {
+            console.log("Error", err);
+            dispatch(itemsFailure());
+        });
+};
+
+export const itemsSuccess = (items) => ({
+   type: ITEMS_SUCCESS,
+   payload: items,
+});
+
+export const itemsRequest = () => ({
+    type: ITEMS_REQUEST,
+});
+
+export const itemsFailure = () => ({
+    type: ITEMS_FAILURE,
+});
+
+
 
 const ITEM_ADDED = "ITEM_ADDED";
 const ITEM_REMOVE = "ITEM_REMOVED";
@@ -24,11 +61,17 @@ const initialState = {
     },
     cart: [
         //item
-    ]
+    ],
+    items:[],
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case ITEMS_SUCCESS:
+            return {
+                ...state,
+                items: action.payload,
+            };
         case ITEM_REMOVE: {
             return {
                 ...state,
@@ -47,7 +90,7 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 //store.subscribe(() => console.log(store.getState()));
 export default store;
 
