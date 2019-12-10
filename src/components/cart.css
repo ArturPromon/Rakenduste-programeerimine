@@ -37,3 +37,8 @@ table{
     margin: 30px;
     justify-content: center;
 }
+.hover--opacity:hover{
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all .2s;
+}

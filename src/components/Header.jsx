@@ -9,7 +9,6 @@ import {ItemProps} from "../pages/CartPage.jsx";
 import {connect} from "react-redux";
 
 const Header = ({user, cart}) => {
-	console.log(cart);
   return(
 <div className='header'>
 			<Link to={"/"}>
@@ -35,6 +34,7 @@ Header.propTypes = {
 };
 
 const Badge = ({children}) => {
+	if(children === 0) return null;
 	return(
 		<span className={"badge"}>
 			{children}

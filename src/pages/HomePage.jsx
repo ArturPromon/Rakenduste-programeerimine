@@ -124,5 +124,5 @@ ItemFilters.propTypes = {
   allCategories: PropTypes.array.isReqired,
   handleDropDown: PropTypes.func.isReqired,
   isSelected: PropTypes.func.isReqired,
-}
+};
 export default HomePage;
