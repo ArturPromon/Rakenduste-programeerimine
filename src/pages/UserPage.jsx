@@ -2,18 +2,30 @@ import React from "react";
 import PropTypes from "prop-types";
 import {UserPropTypes} from "../store/reducer";
 import {connect} from "react-redux";
-// import authConsumer from "../components/authConsumer.jsx";
-// import protectedRedirect from "../components/protectedRedirect.jsx";
+import FancyButton from "../components/FancyButton.jsx";
+import {tokenUpdate, userUpdate} from "../store/actions";
+import "./main.css";
+import protectedRedirect from "../components/protectedRedirect.jsx";
 
 
 class UserPage extends React.PureComponent{
     static propTypes = {
         user: PropTypes.shape(UserPropTypes),
+        dispatch: PropTypes.func.isRequired,
+    };
+
+    handleLogout = () => {
+        this.props.dispatch(userUpdate(null));
+        this.props.dispatch(tokenUpdate(null));
     };
     render() {
         return(
-            <div>
-                You are {this.props.user.email}, created at {this.props.user.createdAt}
+            <div className={"itemContainer"}>
+                <div className={"field"}>
+                    {this.props.user.email}<br/>
+                    {this.props.user.createdAt}
+                </div>
+                <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
             </div>
         );
     }
@@ -24,5 +36,4 @@ const mapStateToProps = (store) => {
     };
   };
   
-  export default connect(mapStateToProps)(UserPage);
-  // export default authConsumer(protectedRedirect(UserPage)); 
+  export default connect(mapStateToProps)(protectedRedirect(UserPage));

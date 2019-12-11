@@ -5,6 +5,8 @@ import "../components/cart.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import {removeItem} from "../store/actions.js";
+import {toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class CartPage extends React.PureComponent{
     static propTypes = {
@@ -22,6 +24,7 @@ class CartPage extends React.PureComponent{
 
     handleTrash = (_id) => {
          this.props.dispatch(removeItem(_id));
+         toast.success("Toode eemaldatud!");
     };
 
     render() {
@@ -74,7 +77,7 @@ const Row = ({_id, title, imgSrc, category, price, onTrash}) => {
             <div className={"category"}>
                 Category: {category}
             </div>
-            <div className={"price"}>
+            <div className={"item__price price"}>
                 Price: {price} €
             </div>
             <div className={"close-icon"}>

@@ -2,6 +2,7 @@ import React from "react";
 import "./form.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import {toast} from "react-toastify";
 
 class SignupPage extends React.PureComponent{
     static propTypes = {
@@ -29,9 +30,11 @@ class SignupPage extends React.PureComponent{
             .then(() => {
 
                 this.props.history.push("/login");
+                toast.error("Registreerumine edukas!");
             })
             .catch(err => {
                 console.log("Error", err);
+                toast.error("Registreerimine ebaõnnestus!");
             });
     };
 

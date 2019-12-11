@@ -1,20 +1,15 @@
 const express = require('express')
 const app = express()
-const path = require("path");
 const PORT = process.env.PORT || 3000;
-const ItemRouter = require("./item.router.js");
-const userRouter = require("./user.router.js");
+const path = require('path');
+const apiRouter = require("./apiRouter.js");
 const DB = require("./database.js");
 const bodyParser = require("body-parser");
-const authRouter = require("./auth.router");
+
 
 
 app.use(bodyParser.json());
-
-app.use("/api/v1/auth", authRouter);
-app.use("/api/v1",ItemRouter);
-app.use("/api/v1/",userRouter);
-app.use("/api/v1/", userRouter);
+app.use(apiRouter);
 
 /** For images and bundle.js */
 app.use("/static", express.static("dist/static"));
