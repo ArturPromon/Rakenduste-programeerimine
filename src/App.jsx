@@ -27,7 +27,6 @@ class App extends React.Component {
                             <Route path="/users/:userId" exact component={Pages.UserPage} />
                             <Route path="/items/:itemId" exact component={Pages.ItemPage} />
                             <Route path="/checkout/cart" exact component={Pages.CartPage}/>
-                            <Route component={Pages.NotFound}/>
                         </Switch>
                     </BrowserRouter>
                     </PersistGate>
