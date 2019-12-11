@@ -4,8 +4,8 @@ import Header from "../components/Header.jsx";
 import LoginPage from "./LoginPage.jsx";
 import SignupPage from "./SignupPage.jsx";
 import UserPage from "./UserPage.jsx";
-import NotFound from "./NotFound.jsx";
 import CartPage from "./CartPage.jsx";
+import NotFound from "./NotFound.jsx";
 
 export default {
     HomePage,
