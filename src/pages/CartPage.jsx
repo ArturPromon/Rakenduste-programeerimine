@@ -72,12 +72,12 @@ const Row = ({_id, title, imgSrc, category, price, onTrash}) => {
                 <img src={imgSrc} />
             </div>
             <div className={"title"}>
-                {title}
+                Title: {title}
             </div>
             <div className={"category"}>
                 Category: {category}
             </div>
-            <div className={"item__price price"}>
+            <div className={"itemprice"}>
                 Price: {price} €
             </div>
             <div className={"close-icon"}>

@@ -1,33 +1,40 @@
 .row{
     display: flex;
     position: relative;
-    padding: 50px 0 50px 0;
     border-color: #1a1a1a;
-    border-bottom-width: 1px;
-    border-top-width: 1px;
-    border-style: solid;
+    border-style: dashed; 
 }
 .cell{
-    margin: 10px 10px 10px 10px;
+    margin: 10px 100px 5px 15px;
+    left: 10%;
+}
+.cell--grow {
+    flex-grow: 1;
 }
 .title{
-    margin: 20px 10px 20px 10px;
-    left: 30%;
+    margin: 120px 200px 20px 10px;
+    font-size: 20px;
+    left: 15%;
     position: relative;
 }
-.price{
-    margin: 20px 10px 20px 10px;
+
+.itemprice{
     position: absolute;
-    right: 10%;
-    width: 10%;
+    left: 90%;
+	margin: 0px 0px 5px;
+	font-size: 27px;
+	padding: 10px;
+	color:red
 }
+
 .category{
-    margin: 20px 10px 20px 10px;
-    left: 30%;
+    margin: 120px 10px 20px 10px;
+    font-size: 20px;
+    left: 20%;
     position: absolute;
 }
 .close-icon{
-    margin: 10px 10px 10px 10px;
+    margin: 140px 10px 10px 10px;
     right: 2px;
     position: absolute;
     top: 50px;
@@ -36,9 +43,17 @@ table{
     display: flex;
     margin: 30px;
     justify-content: center;
-}
+
+} 
 .hover--opacity:hover{
     cursor: pointer;
     opacity: 0.5;
     transition: all .2s;
+}
+.cart_summary{
+    width: 350px;
+    float: right;
+    margin-top: 10px;
+    border-color: #1a1a1a;
+    border-style: dashed;   
 }

@@ -41,12 +41,12 @@
 }
 
 item__img-wrapper{
-    margin-bottom: 25px;
+    margin-bottom: 0px;
     display: flex;
     width: 100%;
     justify-content: center;
     align-content: center;
-    height: 140px;
+    height: 180px;
 
 }
 

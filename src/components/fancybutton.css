@@ -13,9 +13,9 @@
     transition: all .2s ease-in-out;
 }
 table {
-    display: block;
+    display: center;
     margin: 10px;
-    justify-content: right;
+    justify-content: center;
 }
 table .submit-button{
     width: 100%;
