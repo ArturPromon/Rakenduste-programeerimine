@@ -27,7 +27,7 @@
 	position: relative;
 	top: 40%;
 	text-align: center;
-	color: white;
+  color: white;
 } 
 .header__buttons{
   display: flex;
