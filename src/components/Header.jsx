@@ -23,9 +23,13 @@ const Header = ({user, cart}) => {
 					<Badge>{cart.length}</Badge>
 				</Link>
 			</div>
-		</div>
+		</div>	
   );
 };
+
+<div>
+<img className="hero" src="static/images/hero.png"/>
+</div>
 
 Header.propTypes = {
 	token: PropTypes.string,

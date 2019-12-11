@@ -7,6 +7,7 @@ import SortDropdown from "../components/SortDropdown.jsx";
 import {connect} from "react-redux";
 import {getItems} from "../store/actions.js";
 import {ItemProps} from "./CartPage.jsx";
+import "../components/header.css";
 
 
 class HomePage extends React.PureComponent {
@@ -75,6 +76,9 @@ handleSortDropdown= (sortDirection) => {
     const items = this.getVisibleItems();
     return(
       <>
+      <div className ={"header_hero"}>
+        <div className = {"header-text"}><h1>Tom and Jerry</h1></div>
+      </div>
         <div className={"body-wrapper"}>
         <div className={"filters-wrapper"}>
         <ItemFilters
