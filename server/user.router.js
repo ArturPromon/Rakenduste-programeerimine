@@ -66,7 +66,6 @@ router.get("/", (req, res) => {
 router.delete("/", (req, res) => {
     User.deleteMany({}, (err, docs) => {
         if(err) return handleError(err, res);
-        console.log(docs);
         console.log("Success deleting many users");
         res.send(204);
     });

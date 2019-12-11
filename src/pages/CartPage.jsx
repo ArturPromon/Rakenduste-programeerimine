@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {removeItem} from "../store/actions.js";
 import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as selectors from "../store/selector";
 
 class CartPage extends React.PureComponent{
     static propTypes = {
@@ -102,7 +103,7 @@ Row.propTypes = {
 };
 const mapStateToProps = (store) => {
     return {
-        cart: store.cart
+        cart: selectors.getCart(store),
     };
 };
 export default connect(mapStateToProps)(CartPage); 

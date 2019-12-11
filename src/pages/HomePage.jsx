@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {getItems} from "../store/actions.js";
 import {ItemProps} from "./CartPage.jsx";
 import "../components/header.css";
+import * as selectors from "../store/selector.js";
 
 
 class HomePage extends React.PureComponent {
@@ -128,7 +129,7 @@ ItemFilters.propTypes = {
 };
 const mapStateToProps = (store) => {
   return {
-      items: store.items,
+    items: selectors.getItems(store),
   };
 };
 
