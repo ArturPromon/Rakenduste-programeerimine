@@ -1,5 +1,5 @@
 import HomePage from "./HomePage.jsx";
-import ItemPage from "./itemPage.jsx";
+import ItemPage from "./ItemPage.jsx";
 import Header from "../components/Header.jsx";
 import LoginPage from "./LoginPage.jsx";
 import SignupPage from "./SignupPage.jsx";
