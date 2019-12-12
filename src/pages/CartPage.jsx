@@ -80,6 +80,7 @@ class CartPage extends React.PureComponent{
                                     <FancyButton>VORMISTA OST</FancyButton>
                                 </div>
                         </tr>
+                        
                         </tbody>
                     </table>
                 </div>

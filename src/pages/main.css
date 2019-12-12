@@ -16,7 +16,7 @@
 .badge{
 	position: absolute;
 	padding: 2px 6px;
-	background: #be9021;
+	background: red;
 	top: 60px;
 	color: white;
 	border-radius: 100%;

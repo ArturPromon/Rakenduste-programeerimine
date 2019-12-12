@@ -15,7 +15,7 @@
 }
 .header_hero{
   height: 200px;
-  margin: 0 560px;
+  margin: 0 457px;
   background: url(/static/images/hero.png);
   /* background-size: cover;
   background-position: 0 20%;
@@ -24,10 +24,11 @@
 }
 
 .header-text {
-	position: relative;
-	top: 40%;
+  position: relative;
+	top: 35%;
 	text-align: center;
   color: white;
+  font-size: 25px;
 } 
 .header__buttons{
   display: flex;
