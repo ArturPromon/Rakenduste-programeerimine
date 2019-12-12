@@ -1,5 +1,6 @@
 export const getToken = (store) => {
-    return store.token;
+    if (!store.user) return [];
+    return store.user.cart;
   };
   
   export const getUser = (store) => {

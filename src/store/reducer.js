@@ -1,20 +1,22 @@
 import PropTypes from "prop-types";
 import {
-    ITEMS_SUCCESS, ITEM_REMOVE, ITEM_ADDED, USER_UPDATE, TOKEN_UPDATE
+    ITEMS_SUCCESS,
+    ITEM_REMOVE,
+    ITEM_ADDED,
+    USER_UPDATE,
+    TOKEN_UPDATE
 } from "./actions";
 
 export const UserPropTypes = {
     _id: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
+    cart: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const initialState = {
     token: null,
     user: null,
-    cart: [
-        //item
-    ],
     items: [],
 };
 
@@ -39,13 +41,13 @@ export const reducer = (state = initialState, action) => {
         case ITEM_REMOVE: {
             return {
                 ...state,
-                cart: removeItemById(state.cart, action.payload)
+                user: removeProductFromCart(state.user, action.payload),
             };
         }
         case ITEM_ADDED: {
             return {
                 ...state,
-                cart: state.cart.concat([action.payload])
+                user: addProductToCart(state.user, action.payload),
             };
         }
         default: {
@@ -54,10 +56,28 @@ export const reducer = (state = initialState, action) => {
     }
 };
 
-const removeItemById = (items, _id) => {
-    const index = items.findIndex(item => item._id === _id);
-    if(index === -1) return items;
-    const copy = items.slice();
-    copy.splice(index, 1);
-    return copy;
-}; 
+const addProductToCart = (user, itemId) => {
+    return{
+      ...user,
+      cart: user.cart.concat([itemId])
+    };
+  };
+  
+  const removeProductFromCart = (user, itemId) => {
+    const index = user.cart.findIndex(cartId => cartId === itemId);
+    if(index === -1) return user;
+    const cartCopy = user.cart.slice();
+    cartCopy.splice(index, 1);
+    return {
+        ...user,
+        cart: cartCopy
+    };
+  };
+  
+  // const removeItemById = (items, _id) => {
+  //     const index = items.findIndex(item => item._id === _id);
+  //     if(index === -1) return items;
+  //     const copy = items.slice();
+  //     copy.splice(index, 1);
+  //     return copy;
+  // }; 

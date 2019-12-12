@@ -24,7 +24,7 @@ class SignupPage extends React.PureComponent{
             .then(() => {
 
                 this.props.history.push("/login");
-                toast.error("Registreerumine edukas!");
+                toast.success("Registreerumine edukas!");
             })
             .catch(err => {
                 console.log("Error", err);

@@ -35,7 +35,7 @@ router.put("/:userId/cart/:itemId", (req, res) => {
     req.user.save((err) => {
         if(err) return res.status(500).send("Error cart save");
     });
-    res.send(req.user);
+    res.send(200);
 });
 
 /**
@@ -47,7 +47,7 @@ router.delete("/:userId/cart/:itemId", (req, res) => {
     req.user.save((err) => {
         if(err) return res.status(500).send("Error cart save");
     });
-    res.send(req.user);
+    res.send(200);
 });
 
 /**
