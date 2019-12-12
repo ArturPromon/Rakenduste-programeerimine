@@ -14,6 +14,28 @@ router.delete("/:itemId", (req, res) => {
     })
 });
 
+/**
+ * Create a new item
+ */
+
+router.post("/", (req, res) => {
+    const props = {
+        imgSrc: req.body.imgSrc,
+        title: req.body.title,
+        price: req.body.price,
+        category: req.body.category,
+    };
+    const item1 = new Item(props);
+    item1.save(err => {
+        if (err){
+            console.log("Error: ", err);
+            res.send(500);
+            return;
+        }
+        console.log("Success create!");
+    });
+    res.send(201);
+});
 
 router.post("/", (req, res) => {
     const props = {

@@ -7,6 +7,7 @@ import {tokenUpdate, userUpdate} from "../store/actions";
 import "./main.css";
 import protectedRedirect from "../components/protectedRedirect.jsx";
 import * as selectors from "../store/selector";
+import ItemForm from "../components/ItemForm.jsx";
 
 
 class UserPage extends React.PureComponent{
@@ -27,6 +28,7 @@ class UserPage extends React.PureComponent{
                     {this.props.user.createdAt}
                 </div>
                 <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
+                <ItemForm/>
             </div>
         );
     }
