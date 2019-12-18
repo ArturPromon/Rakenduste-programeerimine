@@ -5,6 +5,9 @@ import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import {addItem} from "../store/actions.js";
 import * as services from "../services";
+import TitleForm from "../components/TitleForm.jsx";
+import PriceForm from "../components/PriceForm.jsx";
+
 class ItemPage extends React.PureComponent{
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -45,6 +48,10 @@ class ItemPage extends React.PureComponent{
             <div className ={"item__price"}>{this.state.price}€</div>
             <div>{loremIpsum}</div>
             <FancyButton onClick={this.handleBuy}>OSTA</FancyButton>
+        </div>
+        <div>
+          <TitleForm props = {this.props}/>
+          <PriceForm props = {this.props}/>
         </div>
       </>
     );

@@ -22,14 +22,18 @@ class UserPage extends React.PureComponent{
     };
     render() {
         return(
+            <>
             <div className={"itemContainer"}>
                 <div className={"field"}>
                     {this.props.user.email}<br/>
                     {this.props.user.createdAt}
                 </div>
                 <FancyButton onClick={this.handleLogout}>Logi välja</FancyButton>
+            </div>
+            <div>
                 <ItemForm/>
             </div>
+            </>
         );
     }
 }

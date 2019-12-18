@@ -9,7 +9,7 @@ class ItemForm extends React.PureComponent{
         title: "",
         price: "",
         imgSrc: "",
-        category: "phones"
+        category: ""
     };
     handleChange = (e) => {
         this.setState({
@@ -51,7 +51,7 @@ class ItemForm extends React.PureComponent{
                                 value={this.state.title}
                             />
                             <input
-                                type="number"
+                                type="text"
                                 placeholder="price"
                                 name="price"
                                 onChange={this.handleChange}
@@ -59,12 +59,22 @@ class ItemForm extends React.PureComponent{
                             />
                             <input
                                 type="text"
-                                placeholder="image URL"
+                                placeholder="URL"
                                 name="imgSrc"
                                 onChange={this.handleChange}
                                 value={this.state.imgSrc}
                             />
-                            <button>Create new product</button>
+                            <input
+                                type="text"
+                                placeholder="category"
+                                name="category"
+                                onChange={this.handleChange}
+                                value={this.state.category}
+                            />
+                            <div>
+                            NB! Category can be olny "phones" or "laptops"
+                            </div>
+                          <button>Create new product</button>
                         </form>
                     </div>
                 </div>

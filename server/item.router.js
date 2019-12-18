@@ -37,6 +37,24 @@ router.post("/", (req, res) => {
     res.send(201);
 });
 
+/**
+ * Rechange title
+ */
+router.put("/:itemId", (req,res) =>{
+    Item.findById(req.params.itemId, function (err, item){
+        console.log(item);
+        if(err){
+            console.log("Error", err);
+            res.status(500).send(err);
+            return;
+        }
+        item.title = req.body.title;
+        //item.price = req.body.price;
+        item.save();
+        res.send(item);
+    });
+});
+
 router.post("/", (req, res) => {
     const props = {
         imgSrc: "google.com",

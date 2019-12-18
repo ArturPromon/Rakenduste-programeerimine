@@ -60,6 +60,9 @@ class SignupPage extends React.PureComponent{
                             />
                             <button>create</button>
                             <p className="message">Already registered? <Link to={"/login"}>Sign In</Link></p>
+                            <div>
+                                Sjuda poidut vse emailq
+                            </div>
                         </form>
                     </div>
                 </div>

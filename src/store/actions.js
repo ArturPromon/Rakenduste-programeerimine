@@ -54,7 +54,7 @@ export const addItem = (item) => (dispatch, getState) => {
 
 export const getItems = () => (dispatch, getState) => {
     const store = getState();
-    if(selectors.getItems(store).length > 0) console.log("hui");
+    if(selectors.getItems(store).length > 0) console.log("ura");
     dispatch(itemsRequest());
         return services.getItems()
         .then(items => {
