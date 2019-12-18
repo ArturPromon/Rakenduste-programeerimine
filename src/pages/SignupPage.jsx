@@ -15,8 +15,24 @@ class SignupPage extends React.PureComponent{
         this.state = {
             email: "",
             password: "",
+            usedEmail: [],
+
         };
     }
+
+    componentDidMount() {
+        this.getEmail();
+    }
+
+    getEmail = () => {
+        fetch("/api/v1/users/")
+            .then(accounts => accounts.json())
+            .then(users => {
+                this.setState({
+                    usedEmail: users.map(user => user.email)
+                });
+            })
+    }; 
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -37,10 +53,11 @@ class SignupPage extends React.PureComponent{
             [e.target.name]: e.target.value,
         });
     };
+
     render() {
         return(
             <>
-                <div><h1 style={{textAlign: "center"}}>Register</h1></div>
+                <div><h1 style={{textAlign: "center"}}>Register page</h1></div>
                 <div className="login-page">
                     <div className="form">
                         <form className="register-form" onSubmit={this.handleSubmit}>
@@ -60,8 +77,15 @@ class SignupPage extends React.PureComponent{
                             />
                             <button>create</button>
                             <p className="message">Already registered? <Link to={"/login"}>Sign In</Link></p>
+                            <p></p>
                             <div>
-                                Sjuda poidut vse emailq
+                                Emails already used:
+                            </div>
+                            <p></p>
+                            <div>
+                                {this.state.usedEmail.map((email) => (
+                                <p>{email}</p>
+                                ))}
                             </div>
                         </form>
                     </div>

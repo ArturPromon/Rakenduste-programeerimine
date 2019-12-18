@@ -1,5 +1,4 @@
 import "../pages/form.css";
-import PropTypes from "prop-types";
 import React from "react";
 import "../pages/main.css";
 import {toast} from "react-toastify";
