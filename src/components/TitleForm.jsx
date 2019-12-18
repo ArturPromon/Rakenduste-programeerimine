@@ -8,6 +8,8 @@ class TitleForm extends React.PureComponent{
     state = {
         title: ""
     };
+
+    
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
@@ -15,7 +17,6 @@ class TitleForm extends React.PureComponent{
     };
 
     handleSubmit = (event) => {
-        event.preventDefault();
         fetch(`/api/v1/items/${this.props.props.match.params.itemId}`,{
             method: "PUT",
             headers: {
@@ -26,6 +27,7 @@ class TitleForm extends React.PureComponent{
             .then(res => {
                 toast.success("Uue title lisamine õnnestunud!");
                 console.log(res.status);
+                
             })
             .catch(err => {
                 console.log("Error", err);

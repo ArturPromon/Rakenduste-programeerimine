@@ -15,8 +15,7 @@ class SignupPage extends React.PureComponent{
         this.state = {
             email: "",
             password: "",
-            usedEmail: [],
-
+            usedEmail: []
         };
     }
 
@@ -38,7 +37,6 @@ class SignupPage extends React.PureComponent{
         event.preventDefault();
         services.signup(this.state)
             .then(() => {
-
                 this.props.history.push("/login");
                 toast.success("Registreerumine edukas!");
             })
